@@ -1,4 +1,5 @@
 import axios from "axios";
+import { YOUTUBE_KEY } from "./movieUtils";
 
 export async function getVideoTrailer(
 	// query: string,
@@ -12,7 +13,7 @@ export async function getVideoTrailer(
 				part: "snippet",
 				type: "video",
 				videoDefinition: "high",
-				key: import.meta.env.VITE_YOUTUBE_API_KEY,
+				key: YOUTUBE_KEY,
 			},
 		}
 	);

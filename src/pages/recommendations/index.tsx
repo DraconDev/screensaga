@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from "react";
-import useSWR, { mutate } from "swr";
-import { genres, searchRecommendations } from "../../utils/movieUtils";
-import MainLayout from "../../layout/MainLayout";
-import { Movie } from "../../types/Movie";
-import { Box, Grid, Link, Typography, Button } from "@mui/material";
-import { imageBaseUrl } from "../moviepage/MoviePage";
+import { Box, Button, Grid, Typography } from "@mui/material";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import useSWR from "swr";
 import MovieCard from "../../components/MovieCard";
-import { useNavigate } from "react-router-dom";
+import MainLayout from "../../layout/MainLayout";
+import { getListOfGenres, searchRecommendations } from "../../utils/movieUtils";
+import { Genres } from "@component/types/Movie";
 
-type Props = {};
-
-const Recommendations = (props: Props) => {
+const Recommendations = () => {
+	const { data: movieGenre } = useSWR<Genres[]>("genres", getListOfGenres);
 	const [searchGenre, setSearchGenre] = useState("");
-	const { data, mutate, error, isLoading } = useSWR(
-		searchGenre,
-		searchRecommendations
-	);
+	const { data, mutate } = useSWR(searchGenre, searchRecommendations);
+
+	console.log(data, movieGenre, "data & genres");
 
 	const router = useRouter();
 	return (
@@ -39,20 +36,21 @@ const Recommendations = (props: Props) => {
 					m: 3,
 				}}
 			>
-				{genres.map((genre) => (
-					<Button
-						variant="contained"
-						color="primary"
-						key={genre.id}
-						sx={{ p: 1, m: 1 }}
-						onClick={() => {
-							setSearchGenre(genre.id.toString());
-							mutate();
-						}}
-					>
-						{genre.name}
-					</Button>
-				))}
+				{movieGenre &&
+					movieGenre?.map((genre) => (
+						<Button
+							variant="contained"
+							color="primary"
+							key={genre.id}
+							sx={{ p: 1, m: 1 }}
+							onClick={() => {
+								setSearchGenre(genre.id.toString());
+								mutate();
+							}}
+						>
+							{genre.name}
+						</Button>
+					))}
 			</Box>
 			<Grid container>
 				{data?.map((movie) => (
@@ -61,7 +59,7 @@ const Recommendations = (props: Props) => {
 						md={4}
 						key={movie.id}
 						p={1}
-						onClick={() => navigate(`/movie/${movie.id}`)}
+						onClick={() => router.push(`/movie/${movie.id}`)}
 						height="70vh"
 					>
 						<MovieCard {...movie} />
@@ -86,7 +84,9 @@ const Recommendations = (props: Props) => {
 							<Button
 								variant="text"
 								color="primary"
-								onClick={() => navigate(`/movie/${movie.id}`)}
+								onClick={() =>
+									router.push(`/movie/${movie.id}`)
+								}
 							>
 								Go to
 							</Button>

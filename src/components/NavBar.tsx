@@ -1,16 +1,13 @@
-import { styled, alpha } from "@mui/material/styles";
+import SearchIcon from "@mui/icons-material/Search";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
-import React, { useEffect } from "react";
+import InputBase from "@mui/material/InputBase";
+import Toolbar from "@mui/material/Toolbar";
+import { alpha, styled } from "@mui/material/styles";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 
 const Search = styled("div")(({ theme }) => ({
 	position: "relative",
@@ -61,7 +58,7 @@ export default function SearchAppBar() {
 
 	function handleKeyDown(e: KeyboardEvent) {
 		if (e.code === "Enter" && searchField.length > 2) {
-			navigate("/search/" + searchField, { replace: true });
+			router.push("/search/" + searchField);
 		}
 	}
 
@@ -91,10 +88,17 @@ export default function SearchAppBar() {
 					}}
 				>
 					<Box>
+						{/* <Button
+							variant="text"
+							onClick={() => router.push("/")}
+							sx={{ mx: 1, color: "white" }}
+						>
+							ScreenSaga
+						</Button> */}
 						<Button
 							variant="text"
 							component={Link}
-							to="/"
+							href="/"
 							sx={{ mx: 1, color: "white" }}
 						>
 							ScreenSaga
@@ -127,7 +131,7 @@ export default function SearchAppBar() {
 							// to={`/search/${searchField}`}
 							onClick={() => {
 								if (searchField.length > 2) {
-									navigate(`/search/${searchField}`);
+									router.push(`/search/${searchField}`);
 								}
 							}}
 							sx={{ color: "white" }}
@@ -136,7 +140,7 @@ export default function SearchAppBar() {
 						</Button>
 					</Box>
 					<Button
-						onClick={() => navigate("/recommendations/")}
+						onClick={() => router.push("/recommendations/")}
 						sx={{ color: "white", mx: 1 }}
 					>
 						Movie recommender

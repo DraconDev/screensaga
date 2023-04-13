@@ -1,23 +1,20 @@
 import React from "react";
 import useSWR from "swr";
-import { genres, getMovieById } from "../../utils/movieUtils";
+import { getMovieById, imageOriginalSize } from "../../utils/movieUtils";
 import MainLayout from "../../layout/MainLayout";
 import { Box, Typography } from "@mui/material";
 import { Genres } from "../../types/Movie";
 import VideoPlayer from "../../components/VideoPlayer";
-type Props = {
-	id: string | undefined;
-};
+import { useRouter } from "next/router";
 
-export const imageBaseUrl = "https://image.tmdb.org/t/p/original";
-
-const MoviePage = ({ id }: Props) => {
-	const { data, error, isLoading } = useSWR(id, getMovieById);
+const MoviePage = () => {
+	const router = useRouter();
+	const id = router.query.id;
+	const { data } = useSWR(id, getMovieById);
 
 	return (
 		<MainLayout>
-			{isLoading && <p>Loading movies...</p>}
-			{error && <p>Error loading movies. Please try again later.</p>}
+
 			{data && (
 				<Box>
 					<Box
@@ -46,7 +43,7 @@ const MoviePage = ({ id }: Props) => {
 					</Box>
 					<Box>
 						<img
-							src={`${imageBaseUrl}${data.backdrop_path}`}
+							src={`${imageOriginalSize}${data.backdrop_path}`}
 							alt=""
 							width="100%"
 						/>
@@ -76,7 +73,7 @@ const MoviePage = ({ id }: Props) => {
 					</Box>
 					<Box sx={{ p: 1, display: "flex", width: "100%" }}>
 						<img
-							src={`${imageBaseUrl}${data.poster_path}`}
+							src={`${imageOriginalSize}${data.poster_path}`}
 							alt=""
 							width="30%"
 						/>

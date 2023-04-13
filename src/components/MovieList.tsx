@@ -2,10 +2,9 @@ import useSWR from "swr";
 import { Box, Grid, Link, Typography } from "@mui/material";
 import MovieCard from "./MovieCard";
 import { POPULAR_URL, getMovies } from "../utils/movieUtils";
-import { fetchWiki } from "../utils/wikipedia";
 
 const MovieList = () => {
-	const { data, error, isLoading } = useSWR(POPULAR_URL, getMovies);
+	const { data } = useSWR(POPULAR_URL, getMovies);
 	return (
 		<Box px={{ py: 6 }}>
 			<Typography
