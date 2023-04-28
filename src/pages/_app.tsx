@@ -4,27 +4,29 @@ import { createTheme } from "@mui/material";
 import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
-	const theme = createTheme({
-		palette: {
-			primary: {
-				main: "#2C3639",
-			},
-			secondary: {
-				light: "#3F4E4F",
-				main: "#3F4E4F",
-			},
-			text: {
-				primary: "#ffffff",
-			},
-			background: {
-				default: "rgb(17, 17, 19)", // sets the
-			},
-		},
-	});
+    const theme = createTheme({
+        palette: {
+            primary: {
+                main: "#2C3639",
+            },
+            secondary: {
+                main: "#222",
+            },
+            text: {
+                primary: "#ffffff",
+            },
+            background: {
+                default: "rgb(17, 17, 19)", // sets the
+            },
+        },
+        typography: {
+            fontFamily: "Kanit",
+        },
+    });
 
-	return (
-		<ThemeProvider theme={theme}>
-			<Component {...pageProps} />
-		</ThemeProvider>
-	);
+    return (
+        <ThemeProvider theme={theme}>
+            <Component {...pageProps} />
+        </ThemeProvider>
+    );
 }
