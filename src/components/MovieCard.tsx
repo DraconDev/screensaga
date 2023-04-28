@@ -19,6 +19,7 @@ const MovieCard = ({ title, poster_path }: Movie) => {
         <Card
             sx={{
                 backgroundColor: "black",
+                maxWidth: "fit",
             }}
         >
             <CardMedia

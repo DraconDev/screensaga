@@ -31,7 +31,7 @@ export default function SearchAppBar() {
     return (
         <Box
             sx={{
-                backgroundColor: "primary.main",
+                backgroundColor: "primary.dark",
                 mb: 8,
                 width: "100%",
             }}
@@ -41,15 +41,19 @@ export default function SearchAppBar() {
                     sx={{
                         display: "flex",
                         alignItems: "center",
+                        justifyContent: "space-between",
                         backgroundColor: "secondary.dark",
                     }}
                 >
-                    <NavButtons text="Saga" route="/" />
-                    <NavButtons text="Picks" route="/recommendations/" />
+                    <Box sx={{ display: "flex" }}>
+                        <NavButtons text="Saga" route="/" />
+                        <NavButtons text="Picks" route="/recommendations/" />
+                    </Box>
                     <NavSearch
                         searchField={searchField}
                         setSearchField={setSearchField}
                     />
+                    <Box></Box>
                 </Toolbar>
             </AppBar>
         </Box>

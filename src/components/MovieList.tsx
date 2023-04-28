@@ -1,10 +1,22 @@
 import useSWR from "swr";
 import { Box, Grid, Link, Typography } from "@mui/material";
 import MovieCard from "./MovieCard";
-import { POPULAR_URL, getMovies } from "../utils/movieUtils";
+import {
+    POPULAR_URL,
+    getListOfGenres,
+    getMovies,
+    getMoviesByGenre,
+} from "../utils/movieUtils";
+import { Movie } from "@component/types/Movie";
 
 const MovieList = () => {
     const { data } = useSWR(POPULAR_URL, getMovies);
+    const { data: genres } = useSWR("genres", getListOfGenres);
+    const { data: moviesByGenre } = useSWR(
+        ["moviesByGenre", genres?.slice(0, 2)],
+        getMoviesByGenre
+    );
+
     return (
         <Box px={{ py: 6 }}>
             <Typography
@@ -18,7 +30,7 @@ const MovieList = () => {
                 Trending
             </Typography>
             <Grid container spacing={0}>
-                {data?.map((movie) => (
+                {data?.slice(0, 15)?.map((movie) => (
                     <Grid
                         item
                         xs={4}
@@ -33,6 +45,39 @@ const MovieList = () => {
                     </Grid>
                 ))}
             </Grid>
+            {moviesByGenre &&
+                genres?.slice(0, 2)?.map((genre, index) => (
+                    <Box>
+                        <Typography
+                            sx={{
+                                textAlign: "left",
+                                fontWeight: 400,
+                                mb: 1,
+                                fontSize: "4vh",
+                            }}
+                        >
+                            {genre.name}
+                        </Typography>
+                        <Grid container spacing={0}>
+                            {moviesByGenre[index]
+                                ?.slice(0, 15)
+                                ?.map((movie) => (
+                                    <Grid
+                                        item
+                                        xs={4}
+                                        sm={2.4}
+                                        key={movie.id}
+                                        component={Link}
+                                        href={`movie/${movie.id}`}
+                                        p={0.5}
+                                        sx={{ backgroundColor: "black" }}
+                                    >
+                                        <MovieCard {...movie} />
+                                    </Grid>
+                                ))}
+                        </Grid>
+                    </Box>
+                ))}
         </Box>
     );
 };

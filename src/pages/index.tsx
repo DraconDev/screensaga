@@ -5,12 +5,11 @@ import { Box } from "@mui/material";
 
 function App() {
     return (
+        <MainLayout>
+            <Swiper />
 
-            <MainLayout>
-                <Swiper />
-                <MovieList />
-            </MainLayout>
-    
+            <MovieList />
+        </MainLayout>
     );
 }
 

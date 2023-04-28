@@ -20,6 +20,7 @@ const NavSearch = ({ searchField, setSearchField }: Props) => {
                 borderRadius: "5px",
                 alignItems: "start",
                 width: "100%",
+                flex: { sx: 1, sm: 0.5 },
             }}
         >
             <Input
