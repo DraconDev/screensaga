@@ -1,7 +1,6 @@
-import { Box, Input, Button, Link } from "@mui/material";
-import router from "next/router";
-import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
+import { Box, Input, Link } from "@mui/material";
+import router from "next/router";
 
 type Props = {
     searchField: string;
@@ -20,7 +19,7 @@ const NavSearch = ({ searchField, setSearchField }: Props) => {
                 borderRadius: "5px",
                 alignItems: "start",
                 width: "100%",
-                flex: { sx: 1, sm: 0.5 },
+                flex: { sx: 1, sm: 1 },
             }}
         >
             <Input
