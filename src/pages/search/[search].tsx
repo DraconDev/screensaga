@@ -1,14 +1,13 @@
-import React from "react";
+import { Movie } from "@component/types/Movie";
+import { Box, Paper, Typography } from "@mui/material";
+import { useRouter } from "next/router";
+import useSWR from "swr";
 import MainLayout from "../../layout/MainLayout";
 import {
     SEARCH_URL,
     getMovies,
     imageOriginalSize,
 } from "../../utils/movieUtils";
-import useSWR from "swr";
-import { Box, Link, Paper, Typography } from "@mui/material";
-import { useRouter } from "next/router";
-import { Movie } from "@component/types/Movie";
 
 const SearchPage = () => {
     const router = useRouter();

@@ -32,10 +32,20 @@ export default function SearchAppBar() {
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "center",
+                alignItems: "center",
             }}
         >
             <>
-                <AppBar position="fixed">
+                <AppBar
+                    position="fixed"
+                    sx={{
+                        display: "flex",
+
+                        width: "100%",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                    }}
+                >
                     <Toolbar
                         sx={{
                             display: "flex",
@@ -43,6 +53,7 @@ export default function SearchAppBar() {
                             justifyContent: "space-between",
                             backgroundColor: "secondary.dark",
                             // mui max width
+                            maxWidth: "1152px",
                         }}
                     >
                         <Box sx={{ display: "flex" }}>
