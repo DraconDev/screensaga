@@ -51,26 +51,23 @@ export default function SearchAppBar() {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "space-between",
-                            backgroundColor: "secondary.dark",
+                            width: "100%",
                             // mui max width
                             maxWidth: "1152px",
                         }}
                     >
-                        <Box sx={{ display: "flex" }}>
-                            <NavButtons
-                                text="Saga"
-                                route="/"
-                            />
-                            <NavButtons
-                                text="Random"
-                                route="/recommendations/"
-                            />
-                        </Box>
+                        <NavButtons
+                            text="Saga"
+                            route="/"
+                        />
                         <NavSearch
                             searchField={searchField}
                             setSearchField={setSearchField}
                         />
-                        <Box></Box>
+                        <NavButtons
+                            text="Random"
+                            route="/recommendations/"
+                        />
                     </Toolbar>
                 </AppBar>
             </>
