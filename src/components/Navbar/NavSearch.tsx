@@ -1,5 +1,5 @@
 import SearchIcon from "@mui/icons-material/Search";
-import { Box, Input, Link } from "@mui/material";
+import { Box, Input } from "@mui/material";
 import router from "next/router";
 
 type Props = {
@@ -14,9 +14,9 @@ const NavSearch = ({ searchField, setSearchField }: Props) => {
             sx={{
                 display: "flex",
                 backgroundColor: "secondary.light",
-                height: "2rem",
+                height: "2.5rem",
                 m: 1,
-                borderRadius: "5px",
+
                 alignItems: "start",
                 width: "100%",
                 flex: { sx: 1, sm: 1 },
@@ -30,20 +30,31 @@ const NavSearch = ({ searchField, setSearchField }: Props) => {
                     mx: 2,
                     fontSize: "1rem",
                     display: "flex",
+                    p: 1,
                 }}
                 value={searchField}
                 onChange={(event) => setSearchField(event.target.value)}
             />
-            <Link
+            <button
                 onClick={() => {
                     if (searchField.length > 2) {
                         router.push(`/search/${searchField}`);
                     }
                 }}
-                sx={{ color: "white", p: 0 }}
+                // add hover pointer
+                style={{
+                    backgroundColor: "primary.dark",
+                    border: "none",
+                    cursor: "pointer",
+                    height: "100%",
+                    width: "2.5rem",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                }}
             >
                 <SearchIcon sx={{ height: "2rem", width: "2rem" }} />
-            </Link>
+            </button>
         </Box>
     );
 };

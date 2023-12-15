@@ -40,10 +40,11 @@ export default function SearchAppBar() {
                     position="fixed"
                     sx={{
                         display: "flex",
-
+                        height: "full",
                         width: "100%",
                         flexDirection: "row",
                         justifyContent: "center",
+                        alignItems: "center",
                     }}
                 >
                     <Toolbar
@@ -55,6 +56,7 @@ export default function SearchAppBar() {
                             // mui max width
                             maxWidth: "1152px",
                             gap: 4,
+                            p: 1,
                         }}
                     >
                         <NavButtons
