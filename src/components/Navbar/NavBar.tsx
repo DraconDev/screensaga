@@ -1,4 +1,3 @@
-import MainLayout from "@component/layout/MainLayout";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -35,7 +34,7 @@ export default function SearchAppBar() {
                 justifyContent: "center",
             }}
         >
-            <MainLayout>
+            <>
                 <AppBar position="fixed">
                     <Toolbar
                         sx={{
@@ -63,7 +62,7 @@ export default function SearchAppBar() {
                         <Box></Box>
                     </Toolbar>
                 </AppBar>
-            </MainLayout>
+            </>
         </Box>
     );
 }
