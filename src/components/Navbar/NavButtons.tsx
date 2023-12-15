@@ -14,7 +14,7 @@ const NavButtons = (props: Props) => {
             sx={{
                 color: "#fff",
                 // mx: 1,
-                fontSize: "1.4rem",
+                fontSize: "1.2rem",
             }}
         >
             {props.text}

@@ -55,7 +55,7 @@ export default function SearchAppBar() {
                             width: "100%",
                             // mui max width
                             maxWidth: "1152px",
-                            gap: 4,
+                            gap: 1,
                             p: 1,
                         }}
                     >

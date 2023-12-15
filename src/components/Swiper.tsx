@@ -1,20 +1,17 @@
 import { Box, Paper, Typography } from "@mui/material";
-import React from "react";
 import Carousel from "react-material-ui-carousel";
-import {
-    POPULAR_URL,
-    getMovies,
-    imageOriginalSize,
-    imageSize,
-} from "../utils/movieUtils";
 import useSWR from "swr";
+import { POPULAR_URL, getMovies, imageOriginalSize } from "../utils/movieUtils";
 
 const Swiper = () => {
     const { data } = useSWR(POPULAR_URL, getMovies);
 
     return (
         <Box sx={{ textAlign: "center", height: "100%" }}>
-            <Carousel animation="fade" indicators={false}>
+            <Carousel
+                animation="fade"
+                indicators={false}
+            >
                 {data?.map((movie) => (
                     <Paper
                         key={movie.id}

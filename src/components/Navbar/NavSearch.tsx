@@ -18,7 +18,7 @@ const NavSearch = ({ searchField, setSearchField }: Props) => {
                 m: 1,
 
                 alignItems: "start",
-                width: "100%",
+                // width: "100%",
                 flex: { sx: 1, sm: 1 },
             }}
         >
@@ -31,6 +31,7 @@ const NavSearch = ({ searchField, setSearchField }: Props) => {
                     fontSize: "1rem",
                     display: "flex",
                     p: 1,
+                    width: "100%",
                 }}
                 value={searchField}
                 onChange={(event) => setSearchField(event.target.value)}
