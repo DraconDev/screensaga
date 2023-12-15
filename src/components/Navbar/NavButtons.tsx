@@ -1,6 +1,5 @@
 import { Button } from "@mui/material";
-import router, { useRouter } from "next/router";
-import React from "react";
+import { useRouter } from "next/router";
 
 type Props = {
     route: string;

@@ -1,6 +1,5 @@
 import axios from "axios";
 import { Genres, Movie } from "../types/Movie";
-import useSWR from "swr";
 
 export const OMDB_KEY = process.env.OMDB_KEY;
 export const YOUTUBE_KEY = process.env.YOUTUBE_KEY;
@@ -23,9 +22,7 @@ export async function getMovies(url: string): Promise<Movie[]> {
     // return data.results;
     return filteredResults;
 }
-export async function getMoviesByGenre(
-    genres: [{ name: string; id: number }]
-): Promise<[Movie[]]> {
+export async function getMoviesByGenre(genres: Genres[]): Promise<[Movie[]]> {
     let result = [];
     for (let genre of genres) {
         const response = await fetch(MOVIES_GENRES_URL + genre.id);

@@ -1,20 +1,20 @@
-import useSWR from "swr";
 import { Box, Grid, Link, Typography } from "@mui/material";
-import MovieCard from "./MovieCard";
+import useSWR from "swr";
 import {
     POPULAR_URL,
     getListOfGenres,
     getMovies,
     getMoviesByGenre,
 } from "../utils/movieUtils";
-import { Movie } from "@component/types/Movie";
+import MovieCard from "./MovieCard";
 
 const MovieList = () => {
     const { data } = useSWR(POPULAR_URL, getMovies);
     const { data: genres } = useSWR("genres", getListOfGenres);
+
     const { data: moviesByGenre } = useSWR(
         ["moviesByGenre", genres?.slice(0, 2)],
-        getMoviesByGenre
+        () => getMoviesByGenre(genres ? genres.slice(0, 2) : [])
     );
 
     return (
@@ -29,7 +29,10 @@ const MovieList = () => {
             >
                 Trending
             </Typography>
-            <Grid container spacing={0}>
+            <Grid
+                container
+                spacing={0}
+            >
                 {data?.slice(0, 15)?.map((movie) => (
                     <Grid
                         item
@@ -58,7 +61,10 @@ const MovieList = () => {
                         >
                             {genre.name}
                         </Typography>
-                        <Grid container spacing={0}>
+                        <Grid
+                            container
+                            spacing={0}
+                        >
                             {moviesByGenre[index]
                                 ?.slice(0, 15)
                                 ?.map((movie) => (
