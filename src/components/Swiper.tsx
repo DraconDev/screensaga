@@ -7,6 +7,7 @@ const Swiper = () => {
     const { data } = useSWR(POPULAR_URL, getMovies);
 
     return (
+        // min 650px on desktop
         <Box sx={{ textAlign: "center", height: "100%" }}>
             <Carousel
                 animation="fade"
@@ -29,7 +30,7 @@ const Swiper = () => {
                             height="100%"
                             style={{ objectFit: "cover" }}
                         />
-                        <Typography sx={{ fontSize: "3vh" }}>
+                        <Typography sx={{ fontSize: "1.4rem" }}>
                             {movie.title}
                         </Typography>
                     </Paper>

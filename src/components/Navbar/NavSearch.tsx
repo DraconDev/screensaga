@@ -44,7 +44,7 @@ const NavSearch = ({ searchField, setSearchField }: Props) => {
                 }}
                 // add hover pointer
                 style={{
-                    backgroundColor: "primary.dark",
+                    backgroundColor: "#222",
                     border: "none",
                     cursor: "pointer",
                     height: "100%",
