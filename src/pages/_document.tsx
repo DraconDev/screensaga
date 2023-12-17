@@ -20,7 +20,7 @@ export default function Document() {
                     rel="stylesheet"
                 />
             </Head>
-            <body>
+            <body style={{ minHeight: "100vh" }}>
                 <Main />
                 <NextScript />
             </body>
